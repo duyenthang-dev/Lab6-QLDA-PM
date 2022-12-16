@@ -1,38 +1,12 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import dayjs from 'dayjs';
-import 'dayjs/locale/vi';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import { useForm } from 'react-hook-form';
-import {
-    BiSearch,
-    BiPhoneCall,
-    BiVideo,
-    BiDotsVerticalRounded,
-    BiDotsHorizontalRounded,
-    BiSmile,
-    BiMicrophone,
-    BiTime,
-} from 'react-icons/bi';
-import { BsFillInfoCircleFill, BsArrowLeft } from 'react-icons/bs';
-import { MdSend } from 'react-icons/md';
-import { useSelector, useDispatch } from 'react-redux';
-import GetStarted from './GetStarted';
-import i18n from 'i18next';
-import { UIEvent } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import SocketContext from '../context/SocketContext';
-import { addNotifications, lastestMessage, loadMessageRoom, openChatInfo } from './../redux/chatSlice';
-import { getTimeline } from './../utils/dateFormat';
-import { v4 as uuidv4 } from 'uuid';
-import {encryptMessage, decryptMessage} from './../services/signal/index'
-import CarouselCaption from 'react-bootstrap/lib/carouselcaption';
-// import PropTypes from 'prop-types';
-import helpers from './../services/signal/helpers'
-import UserService from './../services/userService'
-dayjs.extend(relativeTime);
-dayjs.locale('vi');
+
+const toArrayBuffer = (preKeyBundle) => {
+    let temp = JSON.parse(JSON.stringify(preKeyBundle));
+    temp.identityKey = helpers.base64ToArrayBuffer(preKeyBundle.identityKey)
+    temp.preKey.publicKey = helpers.base64ToArrayBuffer(preKeyBundle.preKey.publicKey)
+    temp.signedPreKey.publicKey = helpers.base64ToArrayBuffer(preKeyBundle.signedPreKey.publicKey)
+    temp.signedPreKey.signature = helpers.base64ToArrayBuffer(preKeyBundle.signedPreKey.signature)
+    return temp;
+}
 
 const toArrayBuffer = (preKeyBundle) => {
     let temp = JSON.parse(JSON.stringify(preKeyBundle));
