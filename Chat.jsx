@@ -1,4 +1,29 @@
+<<<<<<< HEAD
 
+=======
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { useForm } from 'react-hook-form';
+import {
+    BiSearch,
+    BiPhoneCall,
+    BiVideo,
+    BiDotsVerticalRounded,
+    BiDotsHorizontalRounded,
+    BiSmile,
+    BiMicrophone,
+    BiTime,
+} from 'react-icons/bi';
+// make conflict
+import { BsFillInfoCircleFill, BsArrowLeft } from 'react-icons/bs';
+import { MdSend } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
+import GetStarted from './GetStarted';
+>>>>>>> 797293b (update jsx file)
 const toArrayBuffer = (preKeyBundle) => {
     let temp = JSON.parse(JSON.stringify(preKeyBundle));
     temp.identityKey = helpers.base64ToArrayBuffer(preKeyBundle.identityKey)
@@ -7,6 +32,17 @@ const toArrayBuffer = (preKeyBundle) => {
     temp.signedPreKey.signature = helpers.base64ToArrayBuffer(preKeyBundle.signedPreKey.signature)
     return temp;
 }
+<<<<<<< HEAD
+=======
+import { v4 as uuidv4 } from 'uuid';
+import {encryptMessage, decryptMessage} from './../services/signal/index'
+import CarouselCaption from 'react-bootstrap/lib/carouselcaption';
+// import PropTypes from 'prop-types';
+import helpers from './../services/signal/helpers'
+import UserService from './../services/userService'
+dayjs.extend(relativeTime);
+dayjs.locale('vi');
+>>>>>>> 797293b (update jsx file)
 
 const toArrayBuffer = (preKeyBundle) => {
     let temp = JSON.parse(JSON.stringify(preKeyBundle));
