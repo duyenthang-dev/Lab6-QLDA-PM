@@ -1,4 +1,3 @@
-
 const toArrayBuffer = (preKeyBundle) => {
     let temp = JSON.parse(JSON.stringify(preKeyBundle));
     temp.identityKey = helpers.base64ToArrayBuffer(preKeyBundle.identityKey)
@@ -7,6 +6,14 @@ const toArrayBuffer = (preKeyBundle) => {
     temp.signedPreKey.signature = helpers.base64ToArrayBuffer(preKeyBundle.signedPreKey.signature)
     return temp;
 }
+import { v4 as uuidv4 } from 'uuid';
+import {encryptMessage, decryptMessage} from './../services/signal/index'
+import CarouselCaption from 'react-bootstrap/lib/carouselcaption';
+// import PropTypes from 'prop-types';
+import helpers from './../services/signal/helpers'
+import UserService from './../services/userService'
+dayjs.extend(relativeTime);
+dayjs.locale('vi');
 
 const toArrayBuffer = (preKeyBundle) => {
     let temp = JSON.parse(JSON.stringify(preKeyBundle));
