@@ -295,7 +295,6 @@ const Chat = ({recentChat}) => {
                         </Col>
                     </Row>
                 </div>
-                <div className="chat-conversation px-3 flex-grow-1 position-relative">
                     <div>
                         <ul className="list-unstyled chat-conversation-list mt-0 scroll-bar">
                             {listMessage?.length > 0 ? renderMessages(listMessage, scroll, selectedChat.type) : null}
