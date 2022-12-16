@@ -20,12 +20,14 @@ import { MdSend } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 import GetStarted from './GetStarted';
 import i18n from 'i18next';
+import { UIEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SocketContext from '../context/SocketContext';
 import { addNotifications, lastestMessage, loadMessageRoom, openChatInfo } from './../redux/chatSlice';
 import { getTimeline } from './../utils/dateFormat';
 import { v4 as uuidv4 } from 'uuid';
 import {encryptMessage, decryptMessage} from './../services/signal/index'
+import CarouselCaption from 'react-bootstrap/lib/carouselcaption';
 // import PropTypes from 'prop-types';
 import helpers from './../services/signal/helpers'
 import UserService from './../services/userService'
@@ -101,28 +103,8 @@ const renderMessages = (list, scroll, type) => {
         </div>
     );
 
-    let j = 1;
-    // tạo time line nhóm các tin nhắn cùng ngày
-    for (let i = 1; i < list.length; i++) {
-        if (
-            dayjs(list[i].createAt).format('DD/MM/YYYY').toString() !==
-            dayjs(list[i - 1].createAt)
-                .format('DD/MM/YYYY')
-                .toString()
-        ) {
-            htmlMessage.splice(
-                j + 1,
-                0,
-                <div className="chat-day" key={i}>
-                    <span className="chat-day-title">{getTimeline(list[i]?.createAt)}</span>
-                </div>
-            );
-            j++;
-        }
-        j++;
-    }
-
     return htmlMessage;
+    
 };
 
 const Chat = ({recentChat}) => {
