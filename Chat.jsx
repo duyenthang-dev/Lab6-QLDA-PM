@@ -40,13 +40,7 @@ const renderMessages = (list, scroll, type) => {
                 <div className="conversation-item d-flex align-items-end">
                     <div className="conversation-content flex-grow-1">
                         <div className="message-wrap primary-bgcolor color-white">
-                            <div>
-                                {message.body}
-                                <div className="text-end mt-2">
-                                    <BiTime />
-                                    <span className="message-time">{dayjs(message.createAt).format('HH:mm')}</span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -65,10 +59,7 @@ const renderMessages = (list, scroll, type) => {
                         <div className="message-wrap secondary-bgcolor text-color-dark w-100">
                             <div>
                                 {message.body}
-                                <div className="text-end mt-2">
-                                    <BiTime />
-                                    <span className="message-time">{dayjs(message.createAt).format('HH:mm')}</span>
-                                </div>
+                                
                             </div>
                         </div>
                         {type === 1 ? <h6 className="sub-text pt-3 pb-2">{message.author?.fullname}</h6> : null}
